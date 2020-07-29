@@ -1,0 +1,19 @@
+version: '2.3'
+
+services:
+    ml-python-epita:
+        container_name: py3.8-slim-buster
+        image: py3.8-slim-buster
+        build:
+          context: .
+          args:
+            TAG: py3
+        ports:
+            - "88:80"
+            - "32788:8888"
+        volumes:
+            - ../:/app/Repo/ml-python-epita
+            - ./LearningDataSet/:/app/Data/NMRBlue/LearningDataSet/
+            #- ../../../Data/:/app/Data
+        environment:
+            - PYTHONPATH=/app/Repo/ml-python-epita
